@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Genius Tap is a revolutionary Web3 mini-app on Telegram where you earn crypto rewards by tapping and completing tasks. Join now for fun and profits!">
+    <meta name="keywords" content="Genius Tap, tap-to-earn, crypto rewards, Web3, Telegram mini-app">
+    <meta name="author" content="Genius Tap Team">
+    <title>Genius Tap - Earn Crypto Rewards by Tapping & Tasks 🚀</title>
+    <!-- Favicon (Placeholder - replace with actual favicon.ico) -->
+    <link rel="icon" href="https://via.placeholder.com/32?text=GT" type="image/x-icon">
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- AOS for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Global Styles - Clean, Modern Design */
+        :root {
+            --primary-color: #7c3aed;
+            /* Purple */
+            --secondary-color: #ff69b4;
+            /* Pink */
+            --bg-gradient: linear-gradient(135deg, #0a052e, #1a0b3e);
+            --text-color: #e0e0e0;
+            --card-bg: rgba(124, 58, 237, 0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #d1d1d1;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Buttons with Hover Effects */
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Navigation - Sticky */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 5, 46, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section with Background Image */
+        .hero {
+            background: url('https://via.placeholder.com/1920x800?text=Hero+Banner') no-repeat center/cover;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .container {
+            position: relative;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            margin-bottom: 2rem;
+        }
+
+        /* Cards with Hover */
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Accordion for FAQ and Long Sections */
+        .accordion {
+            margin-bottom: 1rem;
+        }
+
+        .accordion summary {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion details[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .accordion .content {
+            padding: 1rem;
+            background: var(--card-bg);
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+
+        /* Slider for Mockups - Simple CSS Slider */
+        .slider {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            text-align: center;
+        }
+
+        .slide img {
+            max-width: 80%;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* Form for Newsletter */
+        .newsletter form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: var(--text-color);
+        }
+
+        /* Footer with Social Icons */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .newsletter form {
+                flex-direction: column;
+            }
+        }
+
+        /* Dark Mode (Optional Toggle) */
+        body.dark-mode {
+            --text-color: #333;
+            --bg-gradient: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            --card-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem;">
+            <!-- First Line: Logo -->
+            <div class="logo" style="flex-basis: 100%; text-align: center; font-size: 1.5rem; font-weight: 700; color: #ff69b4;">
+                Genius Tap 🚀
+            </div>
+
+            <!-- Second Line: Menu Icons -->
+            <div style="flex-basis: 100%; display: flex; justify-content: center; gap: 2rem; font-size: 1.2rem;">
+                <a href="#hero" title="Home"><i class="fas fa-home"></i></a>
+                <a href="#features" title="Features"><i class="fas fa-star"></i></a>
+                <a href="#how-it-works" title="How It Works"><i class="fas fa-cogs"></i></a>
+				<a href="#slide" title="Slide"><i class="fas fa-mobile"></i></a>
+                <a href="#community" title="Community"><i class="fas fa-users"></i></a>
+                <a href="#faq" title="FAQ"><i class="fas fa-question-circle"></i></a>
+                <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero" data-aos="fade-up">
+        <div class="container">
+            <h1>Genius Tap - Earn Crypto Rewards by Tapping & Completing Tasks! 💰</h1>
+            <p>Tap • Earn • Upgrade • Level Up • Withdraw - Unlock Your Earning Potential Today!</p>
+            <button class="btn" onclick="window.location.href='https://t.me/Genius_Tap_Bot'">Start Earning Now 🚀</button>
+            <button class="btn btn-outline" onclick="window.location.href='https://t.me/Income_Genius_CommunityChat'">Join Community 👥</button>
+        </div>
+    </section>
+
+    <!-- Unleash Section - Collapsible for Long Text -->
+    <section id="features" class="section container" data-aos="fade-up">
+        <h2>🚀 Unleash Your Inner Genius: The Power of Genius Tap</h2>
+        <details class="accordion">
+            <summary>Dive into the Future of Gamified Rewards <i class="fas fa-chevron-down"></i></summary>
+            <div class="content">
+                <p>Dive into the future of gamified rewards with Genius Tap, a revolutionary Web3 mini-app designed for the crypto-savvy gamer. This isn't just another app; it's an immersive ecosystem where every tap, every task, and every referral propels you toward exciting rewards.</p>
+            </div>
+        </details>
+        <div class="feature-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+            <div class="card" data-aos="zoom-in">
+                <i class="fas fa-rocket fa-2x" style="color: var(--primary-color);"></i>
+                <h3>Real-time Tap-to-Earn</h3>
+                <p>Engage and earn points instantly with every tap!</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fas fa-calendar-check fa-2x" style="color: var(--primary-color);"></i>
+                <h3>Daily Tasks System</h3>
+                <p>Boost earnings with fun daily challenges.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-trophy fa-2x" style="color: var(--primary-color);"></i>
+                <h3>Level Up & Upgrade</h3>
+                <p>Progress and maximize your potential.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section container" data-aos="fade-up">
+        <h2>🛤️ Your Path to Riches: How Genius Tap Works</h2>
+        <p>Simple steps to start earning crypto rewards today.</p>
+        <ul class="steps" style="list-style: none;">
+            <li class="step card" data-aos="fade-right"><span class="step-number">1</span>
+                <h3>Start the Bot</h3>
+                <p>Launch our Telegram mini-app.</p>
+            </li>
+            <li class="step card" data-aos="fade-right" data-aos-delay="100"><span class="step-number">2</span>
+                <h3>Tap to Earn</h3>
+                <p>Multiply points with taps.</p>
+            </li>
+            <li class="step card" data-aos="fade-right" data-aos-delay="200"><span class="step-number">3</span>
+                <h3>Complete Tasks</h3>
+                <p>Boost income daily.</p>
+            </li>
+            <li class="step card" data-aos="fade-right" data-aos-delay="300"><span class="step-number">4</span>
+                <h3>Claim Rewards</h3>
+                <p>Unlock boosters.</p>
+            </li>
+            <li class="step card" data-aos="fade-right" data-aos-delay="400"><span class="step-number">5</span>
+                <h3>Invite Friends</h3>
+                <p>Earn bonuses.</p>
+            </li>
+            <li class="step card" data-aos="fade-right" data-aos-delay="500"><span class="step-number">6</span>
+                <h3>Withdraw</h3>
+                <p>To your wallet.</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Core Features -->
+    <section class="section container" data-aos="fade-up">
+        <h2>🔓 Unlock Limitless Potential: Core Features</h2>
+        <div class="feature-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+            <div class="card" data-aos="zoom-in"><i class="fas fa-rocket fa-2x"></i>
+                <h3>Ultra-fast Mini-App</h3>
+                <p>Instant loading.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-chart-line fa-2x"></i>
+                <h3>Real-time Balance</h3>
+                <p>Live updates.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-gift fa-2x"></i>
+                <h3>Daily Gifts</h3>
+                <p>Surprises daily.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-puzzle-piece fa-2x"></i>
+                <h3>Special Tasks</h3>
+                <p>Bonus rewards.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-bolt fa-2x"></i>
+                <h3>Energy System</h3>
+                <p>Auto-refill.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="500"><i class="fas fa-gamepad fa-2x"></i>
+                <h3>Game-like UI</h3>
+                <p>Immersive fun.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Features -->
+    <section class="section container" data-aos="fade-up">
+        <h2>🔥 Beyond the Tap: Advanced Features</h2>
+        <div class="advanced-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div class="card" data-aos="flip-left"><i class="fas fa-cloud fa-2x"></i>
+                <h3>Secure Cloud</h3>
+                <p>Protected data.</p>
+            </div>
+            <div class="card" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-wallet fa-2x"></i>
+                <h3>Withdraw</h3>
+                <p>Easy transfers.</p>
+            </div>
+            <div class="card" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-crown fa-2x"></i>
+                <h3>VIP Upgrades</h3>
+                <p>Premium perks.</p>
+            </div>
+            <div class="card" data-aos="flip-left" data-aos-delay="300"><i class="fas fa-users fa-2x"></i>
+                <h3>Referral Boost</h3>
+                <p>Amplify earnings.</p>
+            </div>
+            <div class="card" data-aos="flip-left" data-aos-delay="400"><i class="fas fa-headset fa-2x"></i>
+                <h3>24/7 Support</h3>
+                <p>Always available.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referral System -->
+    <section class="section container" data-aos="fade-up">
+        <h2>📈 Multiply Your Gains: Referral System</h2>
+        <div class="referral-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+            <div class="card" data-aos="fade-up">
+                <h3>Bonus Points</h3>
+                <p>For each referral.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Earn from Taps</h3>
+                <p>Percentage from friends.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Leaderboard</h3>
+                <p>Compete for rewards.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <h3>Unique Link</h3>
+                <p>Easy sharing.</p>
+            </div>
+        </div>
+    </section>
+
+ <br>
+
+    <!-- Mockups Slider -->
+    <section id="slide" class="section container slider" data-aos="fade-up">
+        <h2>👀 See It in Action: Interface Mockups</h2>
+		<br>
+        <div class="slides" id="slides">
+            <div class="slide"><img src="https://via.placeholder.com/300x500?text=Mockup+1" alt="App Mockup 1"></div>
+            <div class="slide"><img src="https://via.placeholder.com/300x500?text=Mockup+2" alt="App Mockup 2"></div>
+            <div class="slide"><img src="https://via.placeholder.com/300x500?text=Mockup+3" alt="App Mockup 3"></div>
+            <div class="slide"><img src="https://via.placeholder.com/300x500?text=Mockup+4" alt="App Mockup 4"></div>
+            <div class="slide"><img src="https://via.placeholder.com/300x500?text=Mockup+5" alt="App Mockup 5"></div>
+        </div>
+        <button onclick="prevSlide()" class="btn" style="position: absolute; left: 1rem; top: 50%;"><i class="fas fa-chevron-left"></i></button>
+        <button onclick="nextSlide()" class="btn" style="position: absolute; right: 1rem; top: 50%;"><i class="fas fa-chevron-right"></i></button>
+    </section>
+
+ <br>
+
+    <!-- Community Section -->
+    <section id="community" class="section container" data-aos="fade-up">
+        <h2>👥 Join the Genesis: Genius Tap Community</h2>
+        <div class="community-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+            <div class="card">
+                <h3>Official Bot</h3><a href="https://t.me/Genius_Tap_Bot">Join Bot 🤖</a>
+                <p>Start your adventure.</p>
+            </div>
+            <div class="card">
+                <h3>Owner</h3><a href="https://t.me/Mr_Income_Genius">Connect 👤</a>
+                <p>Meet the visionary.</p>
+            </div>
+            <div class="card">
+                <h3>Community Channel</h3><a href="https://t.me/Income_Genius_Community">Subscribe 📢</a>
+                <p>Updates & peeks.</p>
+            </div>
+            <div class="card">
+                <h3>Community Chat</h3><a href="https://t.me/Income_Genius_CommunityChat">Chat 💬</a>
+                <p>Discuss strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section id="faq" class="section container" data-aos="fade-up">
+        <h2>❓ Your Questions Answered: Genius Tap FAQ</h2>
+        <details class="accordion">
+            <summary>What is Genius Tap? <i class="fas fa-chevron-down"></i></summary>
+            <div class="content">
+                <p>A Web3 mini-app on Telegram for earning crypto via taps and tasks.</p>
+            </div>
+        </details>
+        <details class="accordion">
+            <summary>Is it free to play? <i class="fas fa-chevron-down"></i></summary>
+            <div class="content">
+                <p>Yes, completely free! Earnings from engagement.</p>
+            </div>
+        </details>
+        <details class="accordion">
+            <summary>How can I earn faster? <i class="fas fa-chevron-down"></i></summary>
+            <div class="content">
+                <p>Complete tasks, use boosters, upgrade, refer friends.</p>
+            </div>
+        </details>
+        <details class="accordion">
+            <summary>How do I withdraw rewards? <i class="fas fa-chevron-down"></i></summary>
+            <div class="content">
+                <p>Convert and withdraw to your crypto wallet via app.</p>
+            </div>
+        </details>
+        <details class="accordion">
+            <summary>How does referral work? <i class="fas fa-chevron-down"></i></summary>
+            <div class="content">
+                <p>Bonus points per referral + percentage from their taps.</p>
+            </div>
+        </details>
+        <details class="accordion">
+            <summary>How to contact support? <i class="fas fa-chevron-down"></i></summary>
+            <div class="content">
+                <p>Email income.genius2012@gmail.com or community chat.</p>
+            </div>
+        </details>
+    </section>
+
+    <!-- Contact & Newsletter -->
+    <section id="contact" class="section container newsletter" data-aos="fade-up">
+        <h2>📧 Connect & Secure: Contact Us</h2>
+        <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div class="card">
+                <h3>Direct Support</h3>
+                <p>Ready to help with any questions.</p>
+                <a href="mailto:income.genius2012@gmail.com"><i class="fas fa-envelope"></i> Email Us</a>
+            </div>
+            <div class="card">
+                <h3>Legal & Privacy</h3>
+                <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a><br>
+                <a href="#"><i class="fas fa-file-contract"></i> Terms of Use</a>
+            </div>
+        </div>
+    </section>
+
+			<br>
+
+    <!-- Subscribe to Newsletter-->
+    <section class="section container" data-aos="fade-up">
+        <div class="card">
+            <h3>Subscribe to Newsletter 📬</h3>
+            <form id="subscribeForm">
+                <input type="email" id="emailInput" placeholder="Your Email" required />
+                <input type="text" id="telegramInput" placeholder="Telegram ID (@username or number)" required />
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+            <div id="msg" class="msg"></div>
+        </div>
+    </section>
+
+    <style>
+        .card {
+            max-width: 420px;
+            margin: auto;
+            padding: 20px;
+            background: #111;
+            border-radius: 12px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #222;
+            color: #fff;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin-top: 8px;
+        }
+
+        .msg {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        // তোমার SheetDB API
+        const API = "https://sheetdb.io/api/v1/jh16z6bl3qow9";
+
+        document.getElementById("subscribeForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            let email = document.getElementById("emailInput").value.trim();
+            let telegram = document.getElementById("telegramInput").value.trim();
+            let message = document.getElementById("msg");
+
+            // পাঠানোর ডাটা — Google Sheet কলামের নামের সাথে 100% MATCH করা হয়েছে
+            let payload = {
+                data: [{
+                    "Timestamp": new Date().toLocaleString(),
+                    "Email": email, // EXACT column
+                    "Telegram ID": telegram // EXACT column
+                }]
+            };
+
+            try {
+                let res = await fetch(API, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    message.innerHTML = "✅ Successfully Subscribed!";
+                    document.getElementById("subscribeForm").reset();
+                } else {
+                    message.innerHTML = "❌ API Error! Try again.";
+                }
+            } catch (err) {
+                message.innerHTML = "❌ Network error!";
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://t.me/Income_Genius_CommunityChat" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                <!-- Add more socials as needed -->
+            </div>
+            <p>© 2024 Genius Tap. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Initialize AOS animations
+
+        // Slider Functionality
+        let slideIndex = 0;
+        const slides = document.getElementById('slides');
+        const totalSlides = slides.children.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) slideIndex = 0;
+            if (index < 0) slideIndex = totalSlides - 1;
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+        setInterval(nextSlide, 5000); // Auto-slide
+
+        // Smooth Scroll for Nav Links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Google Analytics Placeholder
+        // <!-- Google Analytics Script Here -->
+    </script>
+</body>
+
+</html>
